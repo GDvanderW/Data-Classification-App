@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='icon' href='images/favicon1.ico' type='image/x-icon'/ >
     <link rel="stylesheet" href="style.css">
     <title>Data Upload</title>
 </head>
 <body>
     <div class="body-container" id="body-container">
         <br>
-        <h1>Select a data file to upload</h1>
+        <h1 class="animated fadeInUp delay-05s">Select a data file to upload</h1>
         <br>
-        <input id="data-file" type="file" onchange="uploadMyFile(this)">
-        <br><br><button type="submit" onclick="hello()" >POST NOW</button>
-        <br><br><button type="submit" onclick="Kello()" >GET NOW</button>
+        <input id="data-file" type="file" onchange="uploadMyFile(this)" class="animated fadeInUp delay-05s">
+        <br><br><button type="submit" onclick="hello()" class="animated fadeInUp delay-05s">POST NOW</button>
+        <br><br><button type="submit" onclick="Kello()" class="animated fadeInUp delay-05s">GET NOW</button>
         <script src="app.js"></script>
     </div>
 </body>

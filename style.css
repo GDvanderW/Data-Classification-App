@@ -3,6 +3,10 @@ body{
     height: 100%;
     font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(226, 238, 253);
+    background-image: url('images/bg.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     justify-content: center;
     margin: 0;
@@ -12,11 +16,82 @@ body{
 h1{
     display: flex;
     justify-content: center;
-    color: #333333
+    color: #fafeff;
+    text-shadow: 2px 2px #525252;
+    margin: 30px;
 }
 
 input{
     display: flex;
     justify-content: center;
-    color: #333333
+    color: #333333;
+}
+
+#body-container{
+    height: 100vh;
+}
+
+.body-container{
+    background-color: rgba(12, 11, 11, 0.0);
+    
+    /* Center and scale the image */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    /* Center and scale the heading text */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    
+}
+
+a, #data-file{
+    color: #fafeff;
+}
+
+@keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+    }
+  
+    100% {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+    }
+}
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 100%, 0);
+      transform: translate3d(0, 100%, 0);
+    }
+  
+    100% {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+    }
+}
+.fadeInDown{
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+}
+.fadeInUp{
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+}
+.animated{
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+.delay-05s{
+    animation-delay: 0.5s;
+    -webkit-animation-delay: 0.5s;
 }

@@ -1,0 +1,14 @@
+{
+    "$schema" : "http://json-schema.org/draft-04/schema#",
+    "title" : "DataRecordsInputModel",
+    "type" : "object",
+    "properties": {
+        "id":{"type" : "string"},
+        "datastorename": {"type" : "string"},
+        "type": {"type" : "string"},
+        "location": {"type" : "string"},
+         "container": {"type" : "string"},
+         "fieldname": {"type" : "string"},
+         "category": {"type" : "string"}
+    }
+}

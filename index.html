@@ -3,37 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='icon' href='images/favicon1.ico' type='image/x-icon'/ >
     <link rel="stylesheet" href="style.css">
-    <title>Data Upload</title>
+    <title>User Login</title>
 </head>
 <body>
     <div class="body-container" id="body-container">
-        <br>
-        <h1>USER LOGIN</h1>
-        <br>
+        
+        <h1 class="animated fadeInDown delay-05s">USER LOGIN</h1>
+        
+        <form id="login">
         <div>
-            <input type="text" id="username" placeholder="Email">
+            <input type="text" id="username" placeholder="Email" class="animated fadeInDown delay-05s">
         </div><br>
         <div>
-            <input type="password" id="password" placeholder="Password">
+            <input type="password" id="password" placeholder="Password" class="animated fadeInDown delay-05s">
         </div><br>
-        <input type="submit" value="LOGIN"><br>
-        <a href="register.html">Create account</a>
+        <input type="submit" value="LOGIN" class="animated fadeInDown delay-05s"><br>
+        <a href="register.html" class="animated fadeInDown delay-05s">Create account</a>
     </div>
-
+    </form>
     <script>
-        document.getElementById('addPost').addEventListener('submit', addPost);
+        document.getElementById('login').addEventListener('submit', loginNow);
 
-        function login(e){
+        function loginNow(e){
             e.preventDefault();
             let email = document.getElementById('username').value;
             let password = document.getElementById('password').value;
 
-            if (email == "gdvanderw@gmail.com") {
-                
-            } else {
-                
-            }
+            window.location.href = "upload.html";
+            console.log("runed");
+            
         }
     </script>
 </body>
