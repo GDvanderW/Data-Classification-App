@@ -7,27 +7,21 @@ exports.handler = async (event, context) => {
     let responseBody = "";
     let statusCode = 0;
 
-    const { id, datastorename, type, location, container, fieldname, category } = JSON.parse(event.body);
+    const { id } = event.pathParameters;
 
     const params = {
         TableName: "Data-Records",
-        Item: {
-            id: id,
-            datastorename: datastorename,
-            type: type,
-            location: location,
-            container: container,
-            fieldname: fieldname,
-            category: category
+        Key: {
+            id: id
         }
       };
 
     try {
-        const data = await documentClient.get(params).promise();
+        const data = await documentClient.delete(params).promise();
         responseBody = JSON.stringify(data);
-        statusCode = 201;
+        statusCode = 204;
     } catch (error) {
-        responseBody = `Unable to post to data records: ${error}`;
+        responseBody = `Unable to delete the data record: ${error}`;
         statusCode = 403;
     }
 

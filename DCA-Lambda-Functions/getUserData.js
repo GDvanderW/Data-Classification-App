@@ -1,23 +1,32 @@
 'use strict'
 const AWS = require('aws-sdk');
 
-AWS.config.update({ region: "af-south-1"});
-
 exports.handler = async (event, context) => {
-  const ddb = new AWS.DynamoDB({ apiVersion: "2012-10-08"});
-  const documentClient = new AWS.DynamoDB.DocumentClient({ region: "af-south-1"});
+    const documentClient = new AWS.DynamoDB.DocumentClient();
 
-  const params = {
-    TableName: "Data-Records",
-    Key: {
-      id: "1"
+    let responseBody = "";
+    let statusCode = 0;
+
+    const { id, datastorename, type, location, container, fieldname, category } = JSON.parse(event.body);
+
+    const params = {
+        TableName: "Data-Records",
+    };
+
+    try {
+        const data = await documentClient.scan(params).promise();
+        responseBody = JSON.stringify(data.Items);
+        statusCode = 200;
+    } catch (error) {
+        responseBody = `Unable to get the data records: ${error}`;
+        statusCode = 403;
     }
-  }
 
-  try {
-    const data = await documentClient.get(params).promise();
-    console.log(data);
-  } catch (err) {
-    console.log(err);
-  }
-}
+    const response = {
+        statusCode: statusCode,
+        headers: {"Content-Type": "application/json"},
+        body: responseBody
+    };
+
+    return response;
+};

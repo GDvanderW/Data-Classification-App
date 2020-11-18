@@ -25,6 +25,7 @@ input{
     display: flex;
     justify-content: center;
     color: #333333;
+    width: 200px;
 }
 
 #body-container{
@@ -94,4 +95,27 @@ a, #data-file{
 .delay-05s{
     animation-delay: 0.5s;
     -webkit-animation-delay: 0.5s;
+}
+
+#dvTable{
+    color: #333;
+    background-color: #e8faff;
+}
+
+#buttons{
+    display: inline-flex;
+    border:none;
+}
+
+#delete{
+    color: aliceblue;
+    background-color: rgb(230, 41, 41);
+}
+#getItems{
+    color: aliceblue;
+    background-color: rgb(12, 163, 57);
+}
+#postItem{
+    color: aliceblue;
+    background-color: rgb(12, 77, 163);
 }
