@@ -107,6 +107,10 @@ a, #data-file{
     border:none;
 }
 
+#delete:hover, #getItems:hover, #postItem:hover, #data-file:hover{
+    cursor: pointer;
+}
+
 #delete{
     color: aliceblue;
     background-color: rgb(230, 41, 41);

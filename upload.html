@@ -10,18 +10,28 @@
 <body>
     <div class="body-container" id="body-container">
         <br>
-        <h1 class="animated fadeInUp delay-05s">Select a data file to upload</h1>
+        <h1 class="animated fadeInUp delay-05s">1) Select a data file to upload</h1>
         
         <input id="data-file" type="file" onchange="uploadMyFile(this)" class="animated fadeInUp delay-05s"><br>
         <div id="dvTable"></div><br>
         <div id="buttons">
-        <br><button type="submit" onclick="hello()" class="animated fadeInUp delay-05s" id="postItem">POST NOW</button><h1> </h1>
-        <br><button type="submit" onclick="GetAllData()" class="animated fadeInUp delay-05s" id="getItems">GET ALL</button><h1> </h1>
+        <br><button type="submit" onclick="postData()" class="animated fadeInUp delay-05s" id="postItem">POST NOW</button><h1> </h1>
+        <br><button type="submit" onclick="getAllData()" class="animated fadeInUp delay-05s" id="getItems">GET ALL</button><h1> </h1>
         <br><button type="submit" onclick="deleteData()" class="animated fadeInUp delay-05s" id="delete">DELETE</button>
         <br>
         </div><br>
-        <input type="text" id="username" placeholder="Record ID of record to modify..." class="animated fadeInUp delay-05s">
+        <input type="text" id="username" placeholder="Record ID of record to delete" class="animated fadeInUp delay-05s">
         
+        <h1 class="animated fadeInUp delay-05s">2) Text will auto populate upon upload, pending manual review...</h1>
+        <div id="manualTable">
+        <input type="text" id="recordID" placeholder="Record ID" class="animated fadeInUp delay-05s">
+        <input type="text" id="datastoreName" placeholder="Datastore Name" class="animated fadeInUp delay-05s">
+        <input type="text" id="type" placeholder="Type" class="animated fadeInUp delay-05s">
+        <input type="text" id="location" placeholder="Storage Location" class="animated fadeInUp delay-05s">
+        <input type="text" id="container" placeholder="Container" class="animated fadeInUp delay-05s">
+        <input type="text" id="fieldName" placeholder="Field Name" class="animated fadeInUp delay-05s">
+        <input type="text" id="category" placeholder="Category : Protected/Unprotected" class="animated fadeInUp delay-05s">
+        </div>
         <script src="app.js"></script>
     </div>
 </body>

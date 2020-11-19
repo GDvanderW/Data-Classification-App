@@ -7,8 +7,6 @@ exports.handler = async (event, context) => {
     let responseBody = "";
     let statusCode = 0;
 
-    const { id, datastorename, type, location, container, fieldname, category } = JSON.parse(event.body);
-
     const params = {
         TableName: "Data-Records",
     };

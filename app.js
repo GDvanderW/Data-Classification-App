@@ -1,22 +1,80 @@
-let APIurl = 'https://jd3o2caeg6.execute-api.af-south-1.amazonaws.com/dataRecords/datarecords/{9}';
-let APIurl2 = 'https://jsonplaceholder.typicode.com/posts';
-let APIurl3 = 'https://jd3o2caeg6.execute-api.af-south-1.amazonaws.com/NewDataStage';
+let dataStoreName = "";
+let typeFile = "";
+let path = "";
+let idRecord = 0;
+let container = "";
+let fieldname = "";
+let category = "Protected";
 
-async function hello() {
-    const mydata = {id: "5", datastorename: "#", type: "#", location: "#", container: "#", fieldname: "#", category: "#"};
+async function uploadMyFile(tempUpload) {
+    // Get datastore name
+    let file = tempUpload.files[0];  
+    dataStoreName = file.name;
+    //------------------------------------------------------DATASTORE NAME = dataStoreName
+    document.getElementById("datastoreName").value = dataStoreName;
+
+    // Get file type
+    let exten = false;
+    let typ = "";
+    for (var i = 0; i < dataStoreName.length; i++) {
+        if(dataStoreName[i] == "." || exten == true){
+                typ = typ + dataStoreName[i];
+                exten = true;
+        }
+      }
+    
+    if(typ == ".txt"){
+        typeFile = "Text"
+    }
+    if(typ == ".xls"){
+        typeFile = "Excel"
+    }
+    if(typ == ".xlsx"){
+        typeFile = "Excel"
+    }
+    if(typ == ".json"){
+        typeFile = "JSON"
+    }
+    if(typ == ".csv"){
+        typeFile = "CSV"
+    }
+    if(typ == ".sql"){
+        typeFile = "SQL"
+    }//------------------------------------------------------------------TYPE = type
+    document.getElementById("type").value = typeFile;
+
+    // Get location of file
+    path = tempUpload.value;
+    //------------------------------------------------------------------Location = path
+    document.getElementById("location").value = path;
+    idRecord = Math.floor((Math.random() * 999999) + 100000);
+    document.getElementById("recordID").value = idRecord;
+    document.getElementById("category").value = "Protected";
+};
+
+async function postData() {
+    idRecord = document.getElementById('recordID').value;
+    dataStoreName = document.getElementById('datastoreName').value;
+    typeFile = document.getElementById('type').value;
+    path = document.getElementById('location').value;
+    container = document.getElementById('container').value;
+    fieldname = document.getElementById('fieldName').value;
+    category = document.getElementById('category').value;
+
+    
+    const mydata = {id: idRecord, datastorename: dataStoreName, type: typeFile, location: path, container: container, fieldname: fieldname, category: category};
     
     let options = {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(mydata)};
-      
         fetch('https://jd3o2caeg6.execute-api.af-south-1.amazonaws.com/NewDataStage/datarecords/id', options)
         .then(response => response.json())
         .then(data => console.log(data))
-    
-}
+        setTimeout(() => getAllData(), 1000);
+    }
 
-async function GetAllData() {
+async function getAllData() {
     fetch('https://jd3o2caeg6.execute-api.af-south-1.amazonaws.com/NewDataStage/datarecords')
     .then((res) => res.json())
     .then((data) => generateTableHtml(data))}
@@ -65,8 +123,10 @@ function deleteData(){
         fetch('https://jd3o2caeg6.execute-api.af-south-1.amazonaws.com/dataRecords/datarecords' + '/' + id, {
           method: 'DELETE'
         }).then(() => {
-           console.log('removed');
+           console.log('Record ID number '+id+' deleted SUCCESSFULLY! :)');
         }).catch(err => {
           console.error(err)
         });
-        }
+        setTimeout(() => getAllData(), 1000);
+        
+    }
