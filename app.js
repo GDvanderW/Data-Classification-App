@@ -1,22 +1,23 @@
-let APIurl = 'https://jd3o2caeg6.execute-api.af-south-1.amazonaws.com/dataRecords/datarecords/';
+let APIurl = 'https://jd3o2caeg6.execute-api.af-south-1.amazonaws.com/dataRecords/datarecords/{9}';
+let APIurl2 = 'https://jsonplaceholder.typicode.com/posts';
+let APIurl3 = 'https://jd3o2caeg6.execute-api.af-south-1.amazonaws.com/NewDataStage';
 
 async function hello() {
-    const data = {id: "#", datastorename: "#", type: "#", location: "#", container: "#", fieldname: "#", category: "#"};
+    const mydata = {id: "5", datastorename: "#", type: "#", location: "#", container: "#", fieldname: "#", category: "#"};
     
     let options = {
-        mode: 'no-cors',
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: "{\"id\":\"7\",\"datastorename\":\"EmployeeOvertimeSchedule.xls\",\"type\":\"Excel\",\"location\":\"Overtime\",\"container\":\"Current Month\",\"fieldname\":\"ID Number\",\"category\":\"Protected\"}"};
-        console.log(JSON.stringify(data));
+        body: JSON.stringify(mydata)};
       
-    fetch(APIurl, options);
-        
+        fetch('https://jd3o2caeg6.execute-api.af-south-1.amazonaws.com/NewDataStage/datarecords/id', options)
+        .then(response => response.json())
+        .then(data => console.log(data))
     
 }
 
 async function GetAllData() {
-    fetch(APIurl)
+    fetch('https://jd3o2caeg6.execute-api.af-south-1.amazonaws.com/NewDataStage/datarecords')
     .then((res) => res.json())
     .then((data) => generateTableHtml(data))}
 
